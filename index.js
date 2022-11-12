@@ -6,21 +6,24 @@ require('dotenv').config()
 //init port number
 const PORT = process.env.PORT || 5000
 
+// init express
 const app = express()
 
 //rate limiting
 const limiter = rateLimit({
-    windowMs: 5 * 60 * 1000,
-    max: 50
+    windowMs: 1 * 60 * 1000,
+    max: 30
 })
-
 app.use(limiter)
 app.set('trust proxy', 1)
 
-//Routes
-app.use('/', require('./routes'))
-
 //enable cors
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5500",
+    methods: ["GET"],
+}))
+
+//Routes
+app.use('/api', require('./routes'))
 
 app.listen(PORT, (console.log(`Server running on port ${PORT}`)))

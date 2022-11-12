@@ -1,21 +1,23 @@
 const express = require('express')
 const router = express.Router()
-const needle = require('needle')
 const apicache = require('apicache')
 
 //Env vars
-const API_KEY = process.env.API_KEY
+const apiKey = process.env.apiKey
+const authDomain = process.env.authDomain
+const databaseURL = process.env.databaseURL
+const projectId = process.env.projectId
+const storageBucket = process.env.storageBucket
+const messagingSenderId = process.env.messagingSenderId
+const appId = process.env.appId
+const API_KEY = {apiKey,authDomain,databaseURL,projectId,storageBucket,messagingSenderId,appId}
 
 //init cache
 let cache = apicache.middleware
 
-router.get('/', cache('2 minutes'), async (req, res) => {
+router.get('/', cache('2 minutes'), (req, res) => {
     try {
-        // const apiRes = await needle('get', `${API_KEY}`, { headers: {"Accept": "application/json"} })
         
-        // const data = apiRes.body
-    
-        // res.status(200).json(data)
         res.status(200).json({API_KEY})
         
     } catch (error) {
