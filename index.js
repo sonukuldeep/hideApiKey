@@ -24,6 +24,6 @@ app.use(cors({
 }))
 
 //Routes
-app.use('/api', require('./routes'))
+app.use('/', require('./routes'))
 
 app.listen(PORT, (console.log(`Server running on port ${PORT}`)))
