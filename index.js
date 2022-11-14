@@ -17,14 +17,10 @@ const limiter = rateLimit({
 app.use(limiter)
 app.set('trust proxy', 1)
 
+//enable cors
+app.use(cors())
+
 //Routes
 app.use('/', require('./routes'))
-
-//enable cors
-app.use(cors({
-    // origin: "https://random-private-chat.netlify.app/",
-    methods: ["GET"],
-}))
-
 
 app.listen(PORT, (console.log(`Server running on port ${PORT}`)))
