@@ -21,10 +21,10 @@ app.set('trust proxy', 1)
 app.use('/', require('./routes'))
 
 //enable cors
-// app.use(cors({
-//     origin: "https://random-private-chat.netlify.app/",
-//     methods: ["GET"],
-// }))
+app.use(cors({
+    // origin: "https://random-private-chat.netlify.app/",
+    methods: ["GET"],
+}))
 
 
 app.listen(PORT, (console.log(`Server running on port ${PORT}`)))

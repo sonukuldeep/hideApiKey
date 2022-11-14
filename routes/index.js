@@ -17,7 +17,7 @@ let cache = apicache.middleware
 
 router.get('/', cache('2 minutes'), (req, res) => {
     try {
-        console.log(req.get('host'))
+        console.log(req.get('origin'))
         res.status(200).json({API_KEY})
         
     } catch (error) {
