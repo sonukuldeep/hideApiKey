@@ -19,7 +19,7 @@ app.set('trust proxy', 1)
 
 //enable cors
 app.use(cors({
-    origin: "https://random-private-chat.netlify.app",
+    origin: "https://random-private-chat.netlify.app/",
     methods: ["GET"],
 }))
 
